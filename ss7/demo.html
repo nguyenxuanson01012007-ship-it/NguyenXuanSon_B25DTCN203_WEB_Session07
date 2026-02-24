@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //  Tính tổng các phân tử trong các mảng sau:
+      const firstArray = [10, 43, 98, 34, 19, 40];
+      const secondArray = [10, 43, 28, 44, 11, 20];
+      const thirdArray = [140, 4243, 98, 34, 19, 420];
+
+      let result_1 = 0;
+      for (let i = 0; i < firstArray.length; i++) {
+        result_1 += firstArray[i];
+      }
+
+      // Các loại function trong JavaScript
+      // 1. Function declaration (Có cơ chế hoisting)
+
+      function getFullName(firstName, lastName = "Nam") {
+        console.log(firstName, lastName);
+
+        return `${firstName} ${lastName}`;
+      }
+
+      // Gọi hàm
+      const fullName = getFullName("Nguyễn Văn", "Tâm");
+      console.log(fullName);
+
+      // 2. Function expression
+      const getEmail = function (Email) {
+        return Email;
+      };
+
+      console.log("Eamil của tôi là", getEmail("akgie@gmail.com"));
+
+      // 3. Arrow function
+      const getFullAddress = (addressDetail, provine, ward, country) => {
+        return `${addressDetail}, ${provine}, ${ward}, ${country}`;
+      };
+
+      console.log(
+        "Địa chỉ: ",
+        getFullAddress(
+          "123 đường Cầu Giấy",
+          "Phường Dịch Vọng",
+          "Thành phố Hà Nội",
+          "Việt Nam",
+        ),
+      );
+
+      const sum = (firstNumber, secondNumber) => {
+        return firstNumber + secondNumber;
+      };
+
+      console.log(sum(10, 20));
+
+      //  Tính tổng các phân tử trong các mảng sau:
+      const firstArray_2 = [10, 43, 98, 34, 19, 40];
+
+      // Yêu cầu xây dựng hàm có tham số là mảng cần tích, trả về tông các phần tử
+
+      const toltal = (arry) => {
+        let result = 0;
+        for (let i = 0; i < arry.length; i++) {
+          result += arry[i];
+        }
+        return toltal;
+      };
+    </script>
+  </body>
+</html>

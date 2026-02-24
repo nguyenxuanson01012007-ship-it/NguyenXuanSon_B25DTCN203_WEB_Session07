@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let players = [
+        "P001-Nguyễn Văn A-Thủ môn",
+        "P002-Trần Thị B-Hậu vệ",
+        "P003-Lê Văn C-Hậu vệ",
+        "P004-Phạm Văn D-Tiền vệ",
+        "P005-Hoàng Thị E-Tiền đạo",
+        "P006-Vũ Minh F-Tiền đạo",
+        "P007-Đặng Văn G-Thủ môn",
+      ];
+      function printTeamRoster() {
+        console.log("===== DANH SÁCH ĐỘI BÓNG =====");
+
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+
+          console.log(
+            i +
+              1 +
+              ". Mã: " +
+              parts[0] +
+              " | Tên: " +
+              parts[1] +
+              " | Vị trí: " +
+              parts[2],
+          );
+        }
+      }
+      function countPlayerByPostion(players) {
+        let result = {};
+
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+          let position = parts[2];
+
+          if (result[position]) {
+            result[position]++;
+          } else {
+            result[position] = 1;
+          }
+        }
+
+        return result;
+      }
+      function hasGoalkeeper() {
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+
+          if (parts[2] === "Thủ môn") {
+            return true;
+          }
+        }
+
+        return false;
+      }
+      printTeamRoster();
+      console.log("\n===== THỐNG KÊ THEO VỊ TRÍ =====");
+      let statistics = countPlayerByPostion(players);
+
+      for (let position in statistics) {
+        console.log(position + ": " + statistics[position]);
+      }
+
+      console.log("\n===== KIỂM TRA THỦ MÔN =====");
+      if (hasGoalkeeper()) {
+        console.log("Đội có ít nhất 1 thủ môn.");
+      } else {
+        console.log("Đội KHÔNG có thủ môn.");
+      }
+    </script>
+  </body>
+</html>

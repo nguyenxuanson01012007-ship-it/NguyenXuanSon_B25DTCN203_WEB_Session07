@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let players = [
+        "P001-Nguyễn Văn A-Thủ môn",
+        "P002-Trần Thị B-Hậu vệ",
+        "P003-Lê Văn C-Hậu vệ",
+        "P004-Phạm Văn D-Tiền vệ",
+        "P005-Hoàng Thị E-Tiền đạo",
+        "P006-Vũ Minh F-Tiền đạo",
+        "P007-Đặng Văn G-Thủ môn",
+      ];
+      function getAllPositions() {
+        let result = [];
+
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+          let position = parts[2];
+
+          if (!result.includes(position)) {
+            result.push(position);
+          }
+        }
+
+        return result;
+      }
+      function findPlayersWithLongestName() {
+        let longestName = "";
+        let maxLength = 0;
+
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+          let name = parts[1];
+
+          if (name.length > maxLength) {
+            maxLength = name.length;
+            longestName = name;
+          }
+        }
+
+        return longestName;
+      }
+
+      function countPlayersStartingWithLetter(letter) {
+        let count = 0;
+
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+          let name = parts[1];
+
+          let firstLetter = name.trim().charAt(0).toLowerCase();
+
+          if (firstLetter === letter.toLowerCase()) {
+            count++;
+          }
+        }
+
+        return count;
+      }
+
+      console.log("===== a. Danh sách vị trí duy nhất =====");
+      console.log(getAllPositions());
+
+      console.log("\n===== b. Tên cầu thủ dài nhất =====");
+      console.log(findPlayersWithLongestName());
+
+      console.log("\n===== c. Đếm tên bắt đầu bằng chữ cái =====");
+      console.log("Bắt đầu bằng 'N': " + countPlayersStartingWithLetter("N"));
+      console.log("Bắt đầu bằng 'T': " + countPlayersStartingWithLetter("T"));
+    </script>
+  </body>
+</html>

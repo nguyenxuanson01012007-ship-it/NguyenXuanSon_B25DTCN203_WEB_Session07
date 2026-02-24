@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let playerIds = ["P001", "P002", "P003", "P004", "P005"];
+      let playerNames = [
+        "Nguyễn Văn A",
+        "Trần Thị B",
+        "Lê Văn C",
+        "Phạm Văn D",
+        "Hoàng Thị E",
+      ];
+      let playerJerseyNumbers = [10, 7, 8, 9, 11];
+
+      let choice;
+
+      do {
+        choice = Number(
+          prompt(`Nhập lựa chọn:
+            1. Hiển thị danh sách
+            2. Cập nhật cầu thủ
+            0. Thoát`),
+        );
+
+        switch (choice) {
+          case 1:
+            printTeamRoster();
+            break;
+          case 2:
+            updatePlayerNameAndJersey();
+            break;
+          case 0:
+            console.log("Thoát chương trình");
+            break;
+          default:
+            console.log("Nhập đúng lựa chọn!");
+        }
+      } while (choice !== 0);
+
+      function updatePlayerNameAndJersey() {
+        let id;
+        let index = -1;
+
+        do {
+          id = prompt("Nhập mã cầu thủ muốn cập nhật:");
+          index = -1;
+
+          for (let i = 0; i < playerIds.length; i++) {
+            if (playerIds[i] === id) {
+              index = i;
+              break;
+            }
+          }
+          if (index === -1) {
+            console.log("Không tìm thấy mã cầu thủ!");
+          }
+        } while (index === -1);
+
+        playerNames[index] = prompt("Nhập tên mới:");
+
+        let newJersey;
+        do {
+          newJersey = Number(prompt("Nhập số áo mới (1–99):"));
+        } while (isNaN(newJersey) || newJersey < 1 || newJersey > 99);
+        playerJerseyNumbers[index] = newJersey;
+        console.log("Cập nhật thành công!");
+      }
+
+      function printTeamRoster() {
+        console.log("Danh sách cầu thủ sau khi cập nhật:");
+        for (let i = 0; i < playerIds.length; i++) {
+          console.log(
+            `${playerIds[i]} - ${playerNames[i]} - Số áo: ${playerJerseyNumbers[i]}`,
+          );
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let players = [];
+      let n;
+
+      do {
+        n = +prompt("Có bao nhiêu cầu thủ cần nhập vào đội bóng?");
+      } while (isNaN(n) || n <= 0);
+
+      for (let i = 0; i < n; i++) {
+        let id;
+        let isDuplicate;
+
+        do {
+          isDuplicate = false;
+          id = prompt("Nhập mã cầu thủ:");
+
+          if (!id) {
+            continue;
+          }
+          for (let j = 0; j < players.length; j++) {
+            let parts = players[j].split("-");
+            if (parts[0] === id) {
+              isDuplicate = true;
+              alert("Mã cầu thủ đã tồn tại! Nhập lại.");
+              break;
+            }
+          }
+        } while (!id || isDuplicate);
+
+        let name;
+        do {
+          name = prompt("Nhập tên cầu thủ:");
+        } while (!name);
+        let position;
+        let choice;
+
+        do {
+          choice = prompt(
+            `Chọn vị trí:
+            1. Thủ môn
+            2. Hậu vệ
+            3. Tiền vệ
+            4. Tiền đạo`,
+          );
+
+          switch (choice) {
+            case "1":
+              position = "Thủ môn";
+              break;
+            case "2":
+              position = "Hậu vệ";
+              break;
+            case "3":
+              position = "Tiền vệ";
+              break;
+            case "4":
+              position = "Tiền đạo";
+              break;
+            default:
+              alert("Lựa chọn không hợp lệ!");
+          }
+        } while (!position);
+
+        players.push(id + "-" + name + "-" + position);
+      }
+
+      function printTeamRoster() {
+        console.log("===== DANH SÁCH ĐỘI BÓNG =====");
+
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+
+          console.log(
+            i +
+              1 +
+              ". Mã: " +
+              parts[0] +
+              " | Tên: " +
+              parts[1] +
+              " | Vị trí: " +
+              parts[2],
+          );
+        }
+      }
+      function pushPlayer(id, name, position) {
+        for (let i = 0; i < players.length; i++) {
+          let parts = players[i].split("-");
+          if (parts[0] === id) {
+            console.log("Mã cầu thủ đã tồn tại!");
+            return;
+          }
+        }
+
+        players.push(id + "-" + name + "-" + position);
+        console.log("Thêm cầu thủ thành công!");
+      }
+      printTeamRoster();
+    </script>
+  </body>
+</html>
